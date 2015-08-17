@@ -55,7 +55,7 @@ public class UsersApi {
         }
     }
 
-    @RequestMapping(value="/{id}", method = RequestMethod.PUT, produces = "application/json")
+    @RequestMapping(value="/{id}/edit", method = RequestMethod.PUT, produces = "application/json")
     public
     @ResponseBody
     ResponseEntity update(@PathVariable("id") int userId, HttpServletRequest request) {
@@ -85,7 +85,7 @@ public class UsersApi {
         }
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE, produces = "application/json")
     public
     @ResponseBody
     ResponseEntity delete(@PathVariable("id") int userId) {
@@ -99,6 +99,14 @@ public class UsersApi {
 
     private boolean isEmpty(String text) {
         return text == null || "".equals(text);
+    }
+
+    @RequestMapping( value = "/{id}", method = RequestMethod.GET, produces = "application/json")
+    public
+    @ResponseBody
+    ResponseEntity get(@PathVariable("id") String id) {
+        User user = userService.getUserById(Integer.parseInt(id));
+        return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
 }

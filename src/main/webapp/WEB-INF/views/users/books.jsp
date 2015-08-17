@@ -7,24 +7,25 @@
 
 <div class="container">
     <div class="page_header">
-        <h3>用户列表</h3>
+        <h3>图书列表</h3>
+        <h3><a href='/awesome-spring/users/${userid}/books/new'>添加</a></h3>
     </div>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>姓名</th>
-                <th>城市</th>
-                <th>Email</th>
-                <th>手机</th>
+                <th>title</th>
+                <th>summary</th>
+                <th>image</th>
+                <th>author</th>
             </tr>
         </thead>
         <tbody>
-            <c:forEach items="${users}" var="user">
+            <c:forEach items="${books}" var="book">
             <tr>
-                <td><a href="users/${user.id}/books">${user.username}</a></td>
-                <td>${user.city}</td>
-                <td>${user.email}</td>
-                <td>${user.telephone}</td>
+                <td>${book.title}</td>
+                <td>${book.summary}</td>
+                <td>${book.image}</td>
+                <td>${book.author}</td>
             </tr>
             </c:forEach>
         </tbody>

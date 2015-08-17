@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 public interface UserMapper {
+
     @Select("SELECT * FROM users")
     List<User> getAllUsers();
 
@@ -17,9 +18,13 @@ public interface UserMapper {
     )
     void insert(User user);
 
-    @Delete("DELETE FROM users WHERE id=#{userId}")
+    @Delete(
+            "DELETE FROM users WHERE id=#{userId}"
+    )
     void delete(int userId);
 
-    @Select("SELECT * FROM users WHERE id=#{userid}")
+    @Select(
+            "SELECT * FROM users WHERE id=#{useId}"
+    )
     User getUserById(int userId);
 }
